@@ -60,11 +60,13 @@ class SemanticSearchEngine:
         Returns:
             list: A list of dictionaries containing product information and scores.
         """
+        search_start = time.time()
+        
         if not query or not query.strip():
             return []
             
         print(f"\nSearching for: '{query}'")
-        search_start = time.time()
+        search_start_time = time.time()
         
         # Step 1: Encode the query (must normalize for IndexFlatIP)
         query_embedding = self.bi_encoder.encode([query], normalize_embeddings=True)
@@ -108,7 +110,9 @@ class SemanticSearchEngine:
         final_results = results[:top_k]
         
         total_time = time.time() - search_start
+        latency_ms = (time.time() - search_start_time) * 1000
         print(f"Search completed in {total_time:.3f}s (FAISS: {faiss_time:.3f}s, Re-rank: {rerank_time:.3f}s)")
+        print(f"Query latency: {latency_ms:.1f}ms")
         
         return final_results
 
