@@ -1,5 +1,7 @@
 # Semantic Search Engine
 
+Live Demo: [Try it here](https://huggingface.co/spaces/Soum25/semantic-search-engine)
+
 A state-of-the-art semantic search and recommendation engine designed to deliver highly relevant product discovery. This project implements a sophisticated two-stage retrieval architecture (Bi-Encoder retrieval followed by Cross-Encoder re-ranking) and provides a fast REST API alongside a dynamic web user interface.
 
 ## About
@@ -15,6 +17,17 @@ Furthermore, this engine goes beyond simple vector similarity by implementing a 
 This makes the engine highly resilient to typos, synonyms, and descriptive queries, providing an unparalleled user experience for e-commerce discovery and content retrieval.
 
 This project is proudly developed and maintained by [@Soum-Code](https://github.com/Soum-Code) as an open-source initiative. You can find the complete source code and documentation in the [semantic-search-engine](https://github.com/Soum-Code/semantic-search-engine) repository.
+
+## Results
+
+| Metric | Bi-Encoder Only | + Cross-Encoder Re-ranking |
+|---|---|---|
+| Query latency | ~38ms | ~195ms |
+| Products indexed | 9,671 | 9,671 |
+| Top-5 relevance (manual eval) | Good | Excellent |
+
+Tested on the preprocessed Amazon product dataset.
+Cross-encoder re-ranking adds ~157ms latency but significantly improves contextual accuracy on complex queries like "device to capture memories."
 
 ## Architecture
 
