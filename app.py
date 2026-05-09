@@ -1,11 +1,31 @@
 import gradio as gr
 import pandas as pd
-from search.engine import SemanticSearchEngine
 import os
 import sys
+from huggingface_hub import hf_hub_download
 
 # Ensure models and paths are accessible
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+print("Checking for required data files...")
+repo_id = "Soum25/semantic-search-engine"
+revision = "data"
+
+# Download the heavy data files if they aren't present locally
+try:
+    if not os.path.exists("data/preprocessed_products.csv"):
+        print("Downloading dataset...")
+        hf_hub_download(repo_id=repo_id, filename="data/preprocessed_products.csv", repo_type="space", revision=revision, local_dir=".")
+    if not os.path.exists("search/product.index"):
+        print("Downloading FAISS index...")
+        hf_hub_download(repo_id=repo_id, filename="search/product.index", repo_type="space", revision=revision, local_dir=".")
+    if not os.path.exists("embeddings/product_embeddings.npy"):
+        print("Downloading embeddings...")
+        hf_hub_download(repo_id=repo_id, filename="embeddings/product_embeddings.npy", repo_type="space", revision=revision, local_dir=".")
+except Exception as e:
+    print(f"Error downloading data files: {e}")
+
+from search.engine import SemanticSearchEngine
 
 print("Starting Gradio App...")
 
