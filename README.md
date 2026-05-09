@@ -2,6 +2,18 @@
 
 A state-of-the-art semantic search and recommendation engine designed to deliver highly relevant product discovery. This project implements a sophisticated two-stage retrieval architecture (Bi-Encoder retrieval followed by Cross-Encoder re-ranking) and provides a fast REST API alongside a dynamic web user interface.
 
+## About
+
+Traditional keyword-based search engines often fail to capture the true intent of a user's query, especially when dealing with complex or conversational phrasing. If a user searches for "a device to capture memories," a traditional system might struggle if the exact word "camera" is not used. 
+
+This Semantic Search Engine solves that problem by understanding the underlying meaning and context of queries. By leveraging deep learning models, it maps both products and user queries into a shared mathematical vector space. Products that are conceptually similar are located closer together in this space. 
+
+Furthermore, this engine goes beyond simple vector similarity by implementing a powerful two-stage pipeline:
+1. **Initial Retrieval (Speed)**: A fast Bi-Encoder generates an initial pool of relevant candidates from a database of thousands of products in milliseconds using FAISS.
+2. **Re-ranking (Accuracy)**: A highly accurate Cross-Encoder re-evaluates the relationship between the query and each candidate, effectively reading them side-by-side to ensure the final results are contextually perfect.
+
+This makes the engine highly resilient to typos, synonyms, and descriptive queries, providing an unparalleled user experience for e-commerce discovery and content retrieval.
+
 ## Architecture
 
 This project is built using Python, FastAPI, FAISS, and Sentence-Transformers, structured into four distinct phases of operation:
