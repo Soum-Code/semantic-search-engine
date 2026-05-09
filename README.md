@@ -14,6 +14,8 @@ Furthermore, this engine goes beyond simple vector similarity by implementing a 
 
 This makes the engine highly resilient to typos, synonyms, and descriptive queries, providing an unparalleled user experience for e-commerce discovery and content retrieval.
 
+This project is proudly developed and maintained by [@Soum-Code](https://github.com/Soum-Code) as an open-source initiative. You can find the complete source code and documentation in the [semantic-search-engine](https://github.com/Soum-Code/semantic-search-engine) repository.
+
 ## Architecture
 
 This project is built using Python, FastAPI, FAISS, and Sentence-Transformers, structured into four distinct phases of operation:
