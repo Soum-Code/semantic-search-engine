@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Semantic Search</title>
+    <meta name="description" content="A state-of-the-art semantic search engine for product discovery.">
+    <!-- Google Fonts: Outfit for modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/ui/style.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="app-container">
+        <header class="glass-header">
+            <div class="logo">
+                <i class="ph-fill ph-planet"></i>
+                <span>Nexus</span>
+            </div>
+            <div class="search-container">
+                <form id="search-form" class="search-form">
+                    <i class="ph ph-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search for products by meaning, not just keywords..." autocomplete="off">
+                    <button type="submit" class="primary-btn">Search</button>
+                </form>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <section id="results-section" class="results-section hidden">
+                <div class="section-header">
+                    <h2>Results for <span id="query-display" class="highlight"></span></h2>
+                    <span id="result-count" class="badge"></span>
+                </div>
+                <div id="loading-indicator" class="loading-indicator hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing semantics...</p>
+                </div>
+                <div id="results-grid" class="results-grid">
+                    <!-- Cards injected via JS -->
+                </div>
+            </section>
+
+            <section id="recommendations-section" class="recommendations-section hidden glass-panel">
+                <div class="section-header">
+                    <h2>Similar Products</h2>
+                    <button id="close-recs" class="icon-btn"><i class="ph ph-x"></i></button>
+                </div>
+                <p class="subtitle">Because you looked at <span id="rec-target-title" class="highlight"></span></p>
+                <div id="rec-loading" class="loading-indicator hidden">
+                    <div class="spinner"></div>
+                </div>
+                <div id="recommendations-list" class="recommendations-list">
+                    <!-- Recommendation items injected via JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/ui/app.js"></script>
+</body>
+</html>
